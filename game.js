@@ -4,27 +4,31 @@
     so it could be consoled out in the console inside of the game function. */
 
 
+    const choices = ['rock', 'paper', 'scissors'];
+    const selections = document.querySelector('.selections');
+    const round = document.querySelector('.round');
+    const showedResults = document.querySelector('.results');
+    var result = 0;
+    var playerScore = 0;
+    var computerScore = 0;
+    var roundNum = 0;
+    const results = ["You win", "You lose", "It\'s a draw"];
+    var playerSelector = 0;
+    var computerSelector = 0;
+    const rock = document.querySelector(".rock");
+    const paper = document.querySelector(".paper");
+    const scissors = document.querySelector(".scissors");
 
     function computerPlay(){
-        const choices = ['rock', 'paper', 'scissors'];
         const choice = Math.round(Math.random()*(choices.length-1));
         return choices[choice];
     }
     
-    // var playerSelector = prompt("Your choice").toLowerCase();
-    // var computerSelector = computerPlay();
-    var result = 0;
-    var playerScore = 0;
-    var computerScore = 0;
-    var roundNum = 1;
-    const results = ["You win", "You lose", "It\'s a draw"];
     
-    
-    function playRound(){
-        var playerSelector = prompt("Your choice").toLowerCase();
-        var computerSelector = computerPlay();
-        console.log("computer choice: ",computerSelector, "| Player choice: ",playerSelector);
-    
+    function playRound(playerSelector){
+
+        computerSelector = computerPlay();
+        
         if(computerSelector == playerSelector){
             result = results[2]
         }else if(computerSelector === "rock" && playerSelector === "scissors"){
@@ -46,23 +50,42 @@
             playerScore++;
             result = results[0]
         }
+        showResults(playerSelector);
+    }
     
+    function showResults(playerSelector){
+        roundNum++; 
+        // console.log(`Round ${roundNum}`);
+        round.innerHTML = `Round ${roundNum}`;
+        selections.innerHTML = `computer choice: ${computerSelector} | Player choice: ${playerSelector}`;
+        showedResults.innerHTML = `${result}. Your score is: ${playerScore}, and this is the computer score ${computerScore}`;
+        if(computerScore == 5){
+            roundNum = 0;
+            alert("You lost")
+            console.clear();
+            playerScore = 0;
+            computerScore = 0;
+        }else if (playerScore == 5){
+            roundNum = 0;
+            alert("You win!")
+            console.clear();
+            computerScore = 0;
+            playerScore = 0;
+        }
+
     }
     
     function game(){
-    
-        while(roundNum <= 5){
-            // computerPlay();
-            console.log(`Round ${roundNum}`)
-                playRound();
-                console.log(result, playerScore, computerScore);
-            roundNum++;
-        }
-        if(playerScore > computerScore){
-            console.log('You did it! congratulations!!!')
-        }else{
-            console.log("Don't give! up you can do it!!")
-        }
-        
+            rock.addEventListener('click', () => {
+                playRound("rock");
+            });
+            paper.addEventListener('click', () => {
+                playRound("paper")
+            });
+            scissors.addEventListener('click', () => {
+                playRound("scissors")
+            });
     }
-    game(); 
+
+    game();
+
