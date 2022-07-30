@@ -7,6 +7,7 @@
     const choices = ['rock', 'paper', 'scissors'];
     const selections = document.querySelector('.selections');
     const round = document.querySelector('.round');
+    // round.style.color = 'white';
     const showedResults = document.querySelector('.results');
     var result = 0;
     var playerScore = 0;
@@ -58,7 +59,7 @@
         // console.log(`Round ${roundNum}`);
         round.innerHTML = `Round ${roundNum}`;
         selections.innerHTML = `computer choice: ${computerSelector} | Player choice: ${playerSelector}`;
-        showedResults.innerHTML = `${result}. Your score is: ${playerScore}, and this is the computer score ${computerScore}`;
+        showedResults.innerHTML = `${result}. Your score is: ${playerScore}, and the computer score is ${computerScore}`;
         if(computerScore == 5){
             roundNum = 0;
             alert("You lost")

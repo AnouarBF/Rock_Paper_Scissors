@@ -1,22 +1,77 @@
-*{
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+body{
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 100vh; 
+    background-color: black;
+    font-family: 'Ubuntu', sans-serif;
 }
 
-body{
-    min-height: 100vh;
+header{
+    height: 10vh;
+    text-align: center;
+    background: yellow; 
+    width: 100%;
+} 
+
+header h1{
+    margin: 15px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 #buttons{
-    min-height: 50vh;
     display: flex;
-    justify-content: center;
-    align-items: center; 
+    justify-content: space-around;
+    align-items: center;
+    width: 70%; 
 }
 
-#container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#buttons #weapon{
+    border: 5px solid yellow;
+    background: black;
+    color: white;
+    font-size: larger;
+    border-radius: 50%;
+    width: 7em;
+    height: 7em;
+    text-transform: uppercase;
+    font-weight: bolder;
+    transition: .2s; 
+}
+
+#buttons #weapon:hover{
+    background: yellow;
+    width: 7.5em;
+    height: 7.5em;
+}
+
+#comments{
+    color: white;
+    margin: 5em;   
+}
+
+#comments #container{
+    margin: .5em;
+    font-size: larger;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+#comments .round{
+    color: yellow;
+}
+
+
+@media(max-width: 600px){
+    #buttons{
+        flex-wrap: wrap;
+    }
+    #buttons #weapon{
+        margin: 1em 0;
+    }
 }
